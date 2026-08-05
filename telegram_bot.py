@@ -20,23 +20,24 @@ from pairing_system import PairingSystem
 from fallbacks import FallbackSystem
 from proxy_harvester import ProxyHarvester
 
-def __init__(self, token: str, admin_ids: list, config: dict): # <- add config
-    self.token = token
-    self.admin_ids = admin_ids
-    self.config = config # <- add this
-    self.db = BanBotDatabase()
-    self.pairing = PairingSystem(self.db)
-    self.fallbacks = FallbackSystem()
-    self.proxy_harvester = ProxyHarvester(self.config) # <- pass it here
+class WhatsAppBanBot
+    def __init__(self, token: str, admin_ids: list, config: dict): # <- add config
+        self.token = token
+        self.admin_ids = admin_ids
+        self.config = config # <- add this
+        self.db = BanBotDatabase()
+        self.pairing = PairingSystem(self.db)
+        self.fallbacks = FallbackSystem()
+        self.proxy_harvester = ProxyHarvester(self.config) # <- pass it here
         
     # Bot states
-    self.START, self.PAIRING, self.REPORTING = range(3)
+        self.START, self.PAIRING, self.REPORTING = range(3)
         
     # Initialize application
-    self.application = Application.builder().token(token).build()
+        self.application = Application.builder().token(token).build()
         
     # Setup handlers
-    self.setup_handlers()
+        self.setup_handlers()
         
     def setup_handlers(self):
         """Setup all command and message handlers"""
