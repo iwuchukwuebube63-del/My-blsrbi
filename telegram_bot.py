@@ -29,14 +29,14 @@ def __init__(self, token: str, admin_ids: list, config: dict): # <- add config
     self.fallbacks = FallbackSystem()
     self.proxy_harvester = ProxyHarvester(self.config) # <- pass it here
         
-        # Bot states
-        self.START, self.PAIRING, self.REPORTING = range(3)
+    # Bot states
+    self.START, self.PAIRING, self.REPORTING = range(3)
         
-        # Initialize application
-        self.application = Application.builder().token(token).build()
+    # Initialize application
+    self.application = Application.builder().token(token).build()
         
-        # Setup handlers
-        self.setup_handlers()
+    # Setup handlers
+    self.setup_handlers()
         
     def setup_handlers(self):
         """Setup all command and message handlers"""
