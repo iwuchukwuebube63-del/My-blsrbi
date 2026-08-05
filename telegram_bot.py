@@ -20,7 +20,7 @@ from pairing_system import PairingSystem
 from fallbacks import FallbackSystem
 from proxy_harvester import ProxyHarvester
 
-class WhatsAppBanBot
+class WhatsAppBanBot:
     def __init__(self, token: str, admin_ids: list, config: dict): # <- add config
         self.token = token
         self.admin_ids = admin_ids
