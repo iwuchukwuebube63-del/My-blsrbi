@@ -37,8 +37,8 @@ def main():
     admin_ids = os.getenv('ADMIN_IDS', '').split(',')
     
     if not token or token == "YOUR_BOT_TOKEN_HERE":
-        print("❌ Error: TELEGRAM_BOT_TOKEN not set in .env file")
-        print("📝 Please create a .env file with:")
+        print("❌ Error: TELEGRAM_BOT_TOKEN not set in.env file")
+        print("📝 Please create a.env file with:")
         print("TELEGRAM_BOT_TOKEN=your_bot_token_here")
         print("ADMIN_IDS=your_user_id_here")
         sys.exit(1)
@@ -47,8 +47,11 @@ def main():
         print("⚠️ Warning: ADMIN_IDS not set. Some commands will be restricted.")
         admin_ids = []
     
+    # Create config dict and pass it <- ONLY 2 NEW LINES
+    config = {"token": token, "admin_ids": admin_ids}
+    
     # Create and run bot
-    bot = WhatsAppBanBot(token=token, admin_ids=admin_ids)
+    bot = WhatsAppBanBot(token=token, admin_ids=admin_ids, config=config) # <- add config=config here
     
     try:
         bot.run()
