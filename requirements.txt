@@ -38,6 +38,7 @@ flask==2.3.2
 flask-cors==4.0.0
 
 # Async
+fake-useragent==1.4.0
 
 # Optional (for advanced features)
 pillow==10.0.0  # Image processing
