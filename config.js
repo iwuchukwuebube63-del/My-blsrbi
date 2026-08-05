@@ -1,0 +1,10 @@
+python-telegram-bot==20.7
+requests==2.31.0
+beautifulsoup4==4.12.3
+colorama==0.4.6
+aiohttp==3.9.1
+aiosqlite==0.19.0
+python-dotenv==1.0.0
+fake-useragent==1.4.0
+pysocks==1.7.1
+lxml==4.9.3
