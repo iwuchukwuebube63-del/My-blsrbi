@@ -22,7 +22,7 @@ from urllib.parse import urlparse
 
 init(autoreset=True)
 
-class ProxyManager:
+class ProxyHarvester:
     """Advanced proxy management with rotation and statistics"""
     
     def __init__(self, config):
