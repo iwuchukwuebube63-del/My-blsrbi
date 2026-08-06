@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # Start web server to keep Render happy
     threading.Thread(target=run_web, daemon=True).start()
     
-    bot = WhatsAppBanBot(TOKEN, ADMIN_IDS, CONFIG)
+    bot = WhatsAppBanBot(token, admin_ids, config)
     bot.run()
     print("""
 ╔══════════════════════════════════════════════════╗
