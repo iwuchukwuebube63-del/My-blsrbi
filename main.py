@@ -4,6 +4,9 @@ Main Entry Point for WhatsApp Ban Bot
 Base and credit by: LORD ZISKY
 """
 
+
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import os
 import sys
 import asyncio
@@ -16,6 +19,17 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # Import bot modules
 from telegram_bot import WhatsAppBanBot
 
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"WhatsApp Ban Bot is running")
+
+def run_web():
+    port = int(os.environ.get("PORT", 10000)) # Render gives you PORT env
+    server = HTTPServer(("0.0.0.0", port), Handler)
+    server.serve_forever()
 # Load environment variables
 load_dotenv()
 
@@ -63,6 +77,11 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
+    # Start web server to keep Render happy
+    threading.Thread(target=run_web, daemon=True).start()
+    
+    bot = WhatsAppBanBot(TOKEN, ADMIN_IDS, CONFIG)
+    bot.run()
     print("""
 ╔══════════════════════════════════════════════════╗
 ║      WHATSAPP BAN BOT v2.0 - INITIALIZING       ║
